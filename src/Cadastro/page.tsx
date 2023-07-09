@@ -4,18 +4,16 @@ import { LoginCard } from "../components/loginCard";
 import { InputCard } from "@/components/input";
 import { ButtonCard } from "@/components/button";
 import React, { useState } from "react";
+import "../app/Global.css";
 import axios from "axios";
-import { useClient } from 'urql';
-
-// interface e{
-//   e: any;
-// }
 
 export default function Cadastro() {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+
 
   const handleNameChange = (e:any) => {
     setName(e.target.value);
@@ -33,7 +31,7 @@ export default function Cadastro() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("https://nodedeploy-api-8124.onrender.com/users", {
+      const response = await axios.post("http://localhost:3333/users", {
         name,  
         email,
         password,
@@ -51,13 +49,13 @@ export default function Cadastro() {
   return (
     <>
       {/* <body className="w-screen h-screen flex justify-center items-center bg-slate-600"> */}
-        <div>
-          <LoginCard title="Crie sua conta">
+        <div className="">
+          <LoginCard title="Crie sua conta Aqui.">
             <form onSubmit={handleSubmit} className="flex flex-col">
               <InputCard type="name" id="name" value={name} onChange={handleNameChange} placeholder="Seu nome"></InputCard>
               <InputCard type="email" id="email" value={email} onChange={handleEmailChange} placeholder="Seu e-mail"></InputCard>
               <InputCard type="password" id="password" value={password} onChange={handlePasswordChange} placeholder="Sua senha"></InputCard>
-              <ButtonCard type="submit">Entrar</ButtonCard>
+              <ButtonCard type="submit">Criar</ButtonCard>
             </form>
             {/* <Link href={"/Login"}>Já possui conta?</Link> */}
           </LoginCard>
