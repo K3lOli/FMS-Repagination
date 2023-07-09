@@ -30,7 +30,7 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3333/auth", {
+      const response = await axios.post("https://nodedeploy-api-8124.onrender.com/auth", {
         email,
         password,
       });
